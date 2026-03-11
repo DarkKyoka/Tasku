@@ -7,19 +7,24 @@ import 'package:task_manager_app/TaskDialogue.dart';
 import 'package:task_manager_app/HomePage.dart';
 
 import 'package:task_manager_app/DBStuff/database.dart';
+import 'package:task_manager_app/main.dart';
 
 class TaskListView extends StatefulWidget {
 
-  final List<Task> tasks; //holds all the available tasks
-
+  final List<Task> onGoingTasks; //holds all the available tasks
+  final List<Task> completeTasks; // holds the complete tasks
+  
   final void Function(TaskModel) onAddTask;
   final void Function(Task) onToggleFavorite;
+  final void Function(Task) onCompleteTask;
 
   const TaskListView({
     super.key,
-    required this.tasks,
+    required this.onGoingTasks,
+    required this.completeTasks,
     required this.onAddTask,
-    required this.onToggleFavorite
+    required this.onToggleFavorite,
+    required this.onCompleteTask
   });
 
   @override
@@ -31,99 +36,175 @@ class _TaskListViewState extends State<TaskListView> {
 
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
-
-      body: Container(
+      //body:
+      return Container(
         color: Color.fromRGBO(39, 2, 36, 1.0),
 
         child:
-          Column(
-            children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: Container(
+                color: Color.fromRGBO(39, 2, 36, 1.0),
 
-              Container(
-                padding: EdgeInsetsGeometry.only(top: 20),
+                child: SingleChildScrollView(
 
-                child:
-                  Text(
-                    "Your Tasks",
-                    style: TextStyle(
-                        color: Color.fromRGBO(247, 247, 255, 1),
-                        fontSize: 22
+                  padding: EdgeInsets.only(bottom: 95),
 
-                    ),
+                  child:
+                  Column(
+                      children: [
+
+                        // OnGoing List
+                        Container(
+                            padding: EdgeInsetsGeometry.only(top: 20, left: 20),
+                            alignment: Alignment.topLeft,
+
+                            child:
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+
+                                Text(
+                                  "Your Tasks",
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(247, 247, 255, 1),
+                                      fontSize: 22
+
+                                  ),
+                                ),
+
+                                Divider(color: Colors.white, thickness: 1, endIndent: 180),
+
+                                ...widget.onGoingTasks.map((task) => Padding(
+                                  padding: EdgeInsetsGeometry.only(bottom: 5),
+                                  child: TaskCard(
+                                    task: task,
+                                    onFavoriteChanged: (newValue) => widget.onToggleFavorite(task),
+
+                                  ),
+
+                                ))
+                                /*
+                              ListView.separated(
+                                  shrinkWrap: true,
+                                  physics: NeverScrollableScrollPhysics(),
+                                  separatorBuilder: (context, index) => SizedBox(height: 5),
+
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 50,
+                                    vertical: 25,
+                                  ),
+
+                                  itemCount: widget.onGoingTasks.length,
+                                  itemBuilder: (context, index){
+                                    final task = widget.onGoingTasks[index];
+
+                                    return TaskCard(
+                                      title: task.taskName,
+                                      description: task.description,
+                                      isCompleted: task.isComplete,
+                                      isFavorite: task.isFavorite,
+                                      onFavoriteChanged: (newValue){
+                                        widget.onToggleFavorite(task);
+                                      },
+                                    );
+                                  }
+                              ),
+                              */
+
+
+                              ],
+
+                            )
+
+
+
+                        ),
+
+
+                        SizedBox( height: 100,),
+
+                        // Completed List
+                        Container(
+                            color: Color.fromRGBO(39, 2, 36, 1.0),
+
+                            margin: EdgeInsetsGeometry.only(left: 20),
+                            alignment: Alignment.topLeft,
+                            child:
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+
+                              children: [
+                                Text("Completed  (X)",
+                                    style:
+                                    TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 24,
+                                    )
+
+                                ),
+
+                                Divider(color: Colors.white, thickness: 1, endIndent: 180),
+
+                                ...widget.completeTasks.map((task) => Padding(
+                                  padding: EdgeInsetsGeometry.only(bottom: 5),
+                                  child: TaskCard(
+                                      task: task,
+                                      onFavoriteChanged: (newValue) => widget.onToggleFavorite(task),
+
+                                  ),
+
+                                )),
+                                /*
+                            ListView.separated(
+
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+
+                                separatorBuilder: (context, index) => SizedBox(height: 5),
+
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 50,
+                                  vertical: 25,
+                                ),
+
+                                itemCount: widget.completeTasks.length,
+                                itemBuilder: (context, index){
+                                  final task = widget.completeTasks[index];
+
+                                  return TaskCard(
+                                    title: task.taskName,
+                                    description: task.description,
+                                    isCompleted: task.isComplete,
+                                    isFavorite: task.isFavorite,
+                                    onFavoriteChanged: (newValue){
+                                      widget.onToggleFavorite(task);
+                                    },
+                                  );
+                                }
+                            ),
+                            */
+
+                                //SizedBox(height: 100,)
+
+                              ],
+                            )
+
+                        ),
+
+                      ]
+
                   ),
+
+                )
+                ,
               ),
 
-
-              Expanded(
-                child:
-                ListView.separated(
-                  separatorBuilder: (context, index) => SizedBox(height: 5),
-
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 50,
-                    vertical: 25,
-                  ),
-
-                  itemCount: widget.tasks.length,
-                  itemBuilder: (context, index){
-                      final task = widget.tasks[index];
-
-                      return TaskCard(
-                        title: task.taskName,
-                        description: task.description,
-                        isCompleted: task.isComplete,
-                        isFavorite: task.isFavorite,
-                        onFavoriteChanged: (newValue){
-                          widget.onToggleFavorite(task);
-                        },
+            )
 
 
-                      );
-                  }
+        );
 
-
-
-
-                ),
-
-
-              ),
-
-
-
-            ]
-
-          )
-
-        ),
-
-        floatingActionButton:
-        FloatingActionButton(
-          onPressed: () async {
-            final task = await showDialog<TaskModel>(
-
-              context: context,
-              builder: (context) => const Taskdialogue(),
-            );
-
-            if (task != null) {
-              widget.onAddTask(task);
-            }
-          },
-
-          backgroundColor: Color.fromRGBO(23, 3, 18, 1.0),
-
-          child:
-            Icon(
-              Icons.add,
-              color: Color.fromRGBO(247, 247, 255, 1),
-            ),
-
-        ),
-
-    );
 
   }
 }

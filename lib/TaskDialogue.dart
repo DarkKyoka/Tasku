@@ -97,7 +97,6 @@ class _TaskdialogueState extends State<Taskdialogue> {
       body:
       SingleChildScrollView(
 
-
         child:
         Container(
           color: Color.fromRGBO(39, 2, 36, 1.0),

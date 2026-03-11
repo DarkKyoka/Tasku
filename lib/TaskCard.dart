@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:task_manager_app/DBStuff/database.dart';
 import 'package:task_manager_app/Task.dart';
+import 'package:task_manager_app/main.dart';
 
 import 'TaskListView.dart';
 import 'HomePage.dart';
@@ -8,19 +10,13 @@ import 'HomePage.dart';
 class TaskCard extends StatefulWidget {
   //final void Function(Task) onAddTasktoFavorites;
 
-  String title;
-  String description;
-  bool isCompleted;
-  bool isFavorite;
+  Task task;
   final void Function(bool)? onFavoriteChanged;
 
 
    TaskCard({
       super.key,
-      required this.title,
-      required this.description,
-      required this.isCompleted,
-      required this.isFavorite,
+      required this.task,
       this.onFavoriteChanged,
   });
 
@@ -36,17 +32,17 @@ class _TaskCardState extends State<TaskCard> {
   void initState() {
     super.initState();
     // initialize local state from the widget
-    isCompleted = widget.isCompleted;
-    isFavorite = widget.isFavorite;
+    isCompleted = widget.task.isComplete;
+    isFavorite = widget.task.isFavorite;
   }
 
   @override
   void didUpdateWidget(TaskCard oldWidget) {
     // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
-    if(oldWidget.isFavorite != widget.isFavorite){
+    if(oldWidget.task.isFavorite != widget.task.isFavorite){
       setState(() {
-        isFavorite = widget.isFavorite;
+        isFavorite = widget.task.isFavorite;
       });
     }
   }
@@ -54,11 +50,13 @@ class _TaskCardState extends State<TaskCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 1, vertical: 30),
+      padding: EdgeInsets.symmetric(horizontal: 1, vertical: 30),
+
       decoration: BoxDecoration(
-        color: const Color.fromRGBO(23, 3, 18, 1.0),
+        color: Color.fromRGBO(23, 3, 18, 1.0),
         borderRadius: BorderRadius.circular(10),
       ),
+
       child: Row(
         children: [
           Checkbox(
@@ -66,26 +64,30 @@ class _TaskCardState extends State<TaskCard> {
             onChanged: (value) {
               setState(() {
                 isCompleted = value ?? false; // update local state
+                if(isCompleted){
+                  taskRepo.completeTask(widget.task);
+                }
               });
             },
           ),
+
 
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.title,
+                  widget.task.taskName,
                   style: TextStyle(
-                    color: const Color.fromRGBO(247, 247, 255, 1.0),
+                    color: Color.fromRGBO(247, 247, 255, 1.0),
                     fontSize: 16,
                     decoration: isCompleted ? TextDecoration.lineThrough : null,
                   ),
                 ),
                 Text(
-                  widget.description,
+                  widget.task.description,
                   style: TextStyle(
-                    color: const Color.fromRGBO(226, 132, 19, 1),
+                    color: Color.fromRGBO(226, 132, 19, 1),
                     fontSize: 12,
                     decoration: isCompleted ? TextDecoration.lineThrough : null,
                   ),

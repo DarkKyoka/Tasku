@@ -41,15 +41,28 @@ class _HomepageState extends State<Homepage> {
               if (!snapshot.hasData) return CircularProgressIndicator();
 
               final allTasks = snapshot.data!;
-              final favs = allTasks.where((t) => t.isFavorite).toList();
-              final regular = allTasks.where((t) => !t.isFavorite).toList();
-              final combined = [...favs, ...regular];
 
+              //on going
+              final favs = allTasks.where((t) => t.isFavorite && !t.isComplete).toList();           // fav = true, Completed = false
+              final regular = allTasks.where((t) => !t.isFavorite && !t.isComplete).toList();       // fav = false ...
+
+              //completed
+              final completedRegular = allTasks.where((t) => t.isComplete && !t.isFavorite).toList();
+              final favCompleted = allTasks.where((t) => t.isComplete && t.isFavorite).toList();   // completed = true, fav = true
+
+              final activeCombinedTasks = [...favs, ...regular];
+              final completedCombinedTasks = [...favCompleted, ...completedRegular];
+
+              // Data of Task List
               return TaskListView(
-                tasks: combined,
+                onGoingTasks: activeCombinedTasks,
+                completeTasks: completedCombinedTasks,
                 onAddTask: (task) => taskRepo.addTask(task),
                 onToggleFavorite: (task) => taskRepo.toggleFavorite(task),
+                onCompleteTask: (task) => taskRepo.completeTask(task),
               );
+
+
             },
         ),
 

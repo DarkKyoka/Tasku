@@ -24,6 +24,14 @@ class TaskRepository {
     db.updateTask(task.copyWith(isFavorite: !task.isFavorite));
   }
 
+  void completeTask(Task task){
+    db.updateTask(task.copyWith(isComplete: true));
+  }
+
+  void unCompleteTask(Task task){
+    db.updateTask(task.copyWith(isComplete: false));
+  }
+
   void deleteTask(Task task) {
     db.deleteTask(task);
   }
