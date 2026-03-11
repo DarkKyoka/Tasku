@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:task_manager_app/HomePage.dart';
 import 'package:task_manager_app/Task.dart';
 import 'package:task_manager_app/TaskDialogue.dart';
 import 'DBStuff/TaskRepository.dart';
-import 'TaskListView.dart';
-import 'package:drift/drift.dart' hide Column;
+import 'package:flutter/services.dart';
 import 'package:task_manager_app/DBStuff/database.dart';
-import 'HomePage.dart';
-import 'package:task_manager_app/DBStuff/database.dart';
+
 
 final  AppDatabase db = AppDatabase();
 final taskRepo = TaskRepository(db);
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    systemNavigationBarColor: Color.fromRGBO(39, 2, 36, 1.0)
+  ));
   //debugPaintSizeEnabled = false;
+  runApp(const MyApp());
+
 }
 
 class MyApp extends StatefulWidget {

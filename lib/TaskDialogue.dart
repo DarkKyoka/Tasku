@@ -79,7 +79,8 @@ class _TaskdialogueState extends State<Taskdialogue> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      backgroundColor: Color.fromRGBO(0, 0, 0, 1.0),
+      resizeToAvoidBottomInset: true,
+      backgroundColor: Color.fromRGBO(39, 2, 36, 1.0),
 
       appBar: 
         AppBar(
@@ -93,69 +94,74 @@ class _TaskdialogueState extends State<Taskdialogue> {
 
         ),
 
-      body: Container(
-        color: Color.fromRGBO(39, 2, 36, 1.0),
-        padding: EdgeInsets.symmetric(horizontal: 26, vertical: 70),
+      body:
+      SingleChildScrollView(
+
+
         child:
+        Container(
+          color: Color.fromRGBO(39, 2, 36, 1.0),
+          padding: EdgeInsets.symmetric(horizontal: 26, vertical: 70),
+          child:
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
-                // Task Name
-                Text("Task Name", style: TextStyle(color: Color.fromRGBO(247, 247, 255, 1), fontSize: 16)),
-                SizedBox(height: 8),
-                TextField(
-                  controller: nameControler,
-                  style: TextStyle(color: Colors.white),
-                  decoration:
-                  InputDecoration(
-                    hintText: "Shopping, Studying etc...",
-                    hintStyle: TextStyle(color: Colors.white38, fontSize: 12),
-                    filled: true,
-                    fillColor: Color.fromRGBO(23, 3, 18, 1.0),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: BorderSide.none),
-                  ),
+              // Task Name
+              Text("Task Name", style: TextStyle(color: Color.fromRGBO(247, 247, 255, 1), fontSize: 16)),
+              SizedBox(height: 8),
+              TextField(
+                controller: nameControler,
+                style: TextStyle(color: Colors.white),
+                decoration:
+                InputDecoration(
+                  hintText: "Shopping, Studying etc...",
+                  hintStyle: TextStyle(color: Colors.white38, fontSize: 12),
+                  filled: true,
+                  fillColor: Color.fromRGBO(23, 3, 18, 1.0),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: BorderSide.none),
                 ),
+              ),
 
-                SizedBox(height: 24),
+              SizedBox(height: 24),
 
-                // Task Description
-                Text("Task Description", style: TextStyle(color: Color.fromRGBO(247, 247, 255, 1), fontSize: 16)),
-                SizedBox(height: 8),
-                TextField(
-                  controller: descriptionControler,
-                  maxLines: 4,
-                  style: TextStyle(color: Colors.white),
-                  decoration:
-                    InputDecoration(
-                      hintText: "Do this, do that...",
-                      hintStyle: TextStyle(color: Colors.white38, fontSize: 12),
-                      filled: true,
-                      fillColor: Color.fromRGBO(23, 3, 18, 1.0),
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: BorderSide.none),
-                    ),
+              // Task Description
+              Text("Task Description", style: TextStyle(color: Color.fromRGBO(247, 247, 255, 1), fontSize: 16)),
+              SizedBox(height: 8),
+              TextField(
+                controller: descriptionControler,
+                maxLines: 4,
+                style: TextStyle(color: Colors.white),
+                decoration:
+                InputDecoration(
+                  hintText: "Do this, do that...",
+                  hintStyle: TextStyle(color: Colors.white38, fontSize: 12),
+                  filled: true,
+                  fillColor: Color.fromRGBO(23, 3, 18, 1.0),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: BorderSide.none),
                 ),
+              ),
 
-                SizedBox(height: 24),
+              SizedBox(height: 24),
 
-                // Priority
-                Row(
-                  children: [
-                    Text("Priority", style: TextStyle(color: Color.fromRGBO(247, 247, 255, 1), fontSize: 16)),
-                    SizedBox(width: 4),
-                    Icon(Icons.info_outline, color: Colors.white38, size: 16),
-                  ],
-                ),
-                SizedBox(height: 8),
-                  Row(
-                    children: [
-                      _priorityButton("Low", 0),
-                      SizedBox(width: 8),
-                      _priorityButton("Normal", 1),
-                      SizedBox(width: 8),
-                      _priorityButton("High", 2),
-                  ],
-                ),
+              // Priority
+              Row(
+                children: [
+                  Text("Priority", style: TextStyle(color: Color.fromRGBO(247, 247, 255, 1), fontSize: 16)),
+                  SizedBox(width: 4),
+                  Icon(Icons.info_outline, color: Colors.white38, size: 16),
+                ],
+              ),
+              SizedBox(height: 8),
+              Row(
+                children: [
+                  _priorityButton("Low", 0),
+                  SizedBox(width: 8),
+                  _priorityButton("Normal", 1),
+                  SizedBox(width: 8),
+                  _priorityButton("High", 2),
+                ],
+              ),
 
               SizedBox(height: 24),
 
@@ -179,7 +185,12 @@ class _TaskdialogueState extends State<Taskdialogue> {
 
             ],
           ),
+        ),
+
+
       ),
+
+
 
 
       bottomNavigationBar: Container(
