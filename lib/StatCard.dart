@@ -1,6 +1,6 @@
 
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 enum statNameColor{
   white,
@@ -13,12 +13,13 @@ class StatCard extends StatelessWidget {
   final String statName;
   final String statValue;
   final statNameColor labelColor;
+  //final double? height
 
   const StatCard({
     required this.statName,
     required this.statValue,
     this.labelColor = statNameColor.white,
-
+    //this.height,
   });
 
   Color _getStatNameColor(){
@@ -33,14 +34,48 @@ class StatCard extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-      color: Color.fromRGBO(11, 0, 8, 100),
+      //alignment: AlignmentGeometry.center,
+      padding: EdgeInsets.all(12),
+      //height: 100,
+      //width: double.infinity,
 
+      decoration:
+        BoxDecoration(
+
+          color: Color.fromRGBO(11, 0, 8, 100),
+          borderRadius: BorderRadius.circular(7),
+        ),
+      
+      
+      
       child: Column(
-
+        crossAxisAlignment: CrossAxisAlignment.stretch,
 
         children: [
-          Text(statName),
-          Text(statValue, style: TextStyle(color: _getStatNameColor(),))
+          Text(statName,
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                  fontSize: 16,
+                  color: _getStatNameColor(),
+                  fontWeight: FontWeight.w500,
+
+              )
+          ),
+
+          Padding(
+            padding: EdgeInsets.only(top: 8),
+            child:
+              Text(statValue,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 36 ,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400
+                  )
+              ),
+
+          )
+
         ],
 
       ),
