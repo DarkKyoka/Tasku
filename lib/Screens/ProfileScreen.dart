@@ -55,7 +55,7 @@ class _ProfileState extends State<Profilescreen>{
 
                 // the Gray Background that will go bellow the Cover and the Pfp and will be visible on the User details and Buttons
                 Container(
-                  color: Colors.grey,
+                  color: Color.fromRGBO(18, 17, 17, 100),
 
                   child:
                   SizedBox(
@@ -63,7 +63,7 @@ class _ProfileState extends State<Profilescreen>{
                     height: 400,
 
                     // Here will sit the Banner and the Pfp Section
-                    child: Column(
+                    child: Stack(
 
 
                       children: [
@@ -74,19 +74,83 @@ class _ProfileState extends State<Profilescreen>{
                           child:
                             SizedBox(
                               height: 198,
+                              child: Text("Banner", textAlign: TextAlign.center,style: TextStyle(color: Colors.white),),
 
                             ),
-                        )
+                        ),
 
 
+                        Positioned(
+                          top: 145,
+                          child:
+                            Padding(padding: EdgeInsetsGeometry.symmetric(horizontal: 15),
+                              child:
+                                Row(
 
+                                  children: [
+
+                                    CircleAvatar(radius: 70,),
+                                    SizedBox(width: 10,),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+
+
+                                      children: [
+                                        SizedBox(height: 55,),
+                                        Text("Name0992929", style: TextStyle(fontSize: 24),),
+                                        Text("Profile tittle", style: TextStyle(fontSize: 15),),
+                                        Text("Level: 10", style: TextStyle(fontSize: 16) ),
+                                        Column(
+                                          children: [
+                                            SizedBox(
+                                              width: 195,
+                                              height: 20,
+
+
+                                              child:
+                                              ClipRRect(
+
+                                                borderRadius: BorderRadiusGeometry.circular(25),
+
+                                                child:
+                                                LinearProgressIndicator(
+                                                  color: Color.fromRGBO(235, 0, 78, 100),
+                                                  backgroundColor: Color.fromRGBO(11, 0, 8, 100),
+                                                  value: 0.7,
+                                                ),
+                                              )
+
+
+                                            )
+
+
+                                          ],
+                                        )
+                                      ],
+                                    )
+
+
+                                  ]
+
+                                ),
+
+
+                            ),
+
+
+                        ),
+
+                        Text("Grey Background")
 
                       ],
+
                     ),
 
                   ),
 
-                )
+                ),
+
+
 
                 // Here i will Rest the Stats and Budgets Screen with the Cards
                       // <---
