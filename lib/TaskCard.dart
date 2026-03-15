@@ -63,10 +63,14 @@ class _TaskCardState extends State<TaskCard> {
             value: isCompleted,
             onChanged: (value) {
               setState(() {
-                isCompleted = value ?? false; // update local state
-                if(isCompleted){
+                isCompleted = value ?? false;
+
+                if (isCompleted) {
                   taskRepo.completeTask(widget.task);
+                } else {
+                  taskRepo.unCompleteTask(widget.task);
                 }
+
               });
             },
           ),

@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:task_manager_app/Task.dart';
 import 'package:task_manager_app/TaskCard.dart';
-import 'package:task_manager_app/TaskDialogue.dart';
+import 'package:task_manager_app/TaskMaker.dart';
 import 'package:task_manager_app/HomePage.dart';
 
 import 'package:task_manager_app/DBStuff/database.dart';
@@ -65,7 +65,7 @@ class _TaskListViewState extends State<TaskListView> {
                               children: [
 
                                 Text(
-                                  "Your Tasks",
+                                  "Your Tasks (${widget.onGoingTasks.length})",
                                   style: TextStyle(
                                       color: Color.fromRGBO(247, 247, 255, 1),
                                       fontSize: 22
@@ -135,7 +135,7 @@ class _TaskListViewState extends State<TaskListView> {
                               crossAxisAlignment: CrossAxisAlignment.start,
 
                               children: [
-                                Text("Completed  (X)",
+                                Text("Completed  (${widget.completeTasks.length})",
                                     style:
                                     TextStyle(
                                       color: Colors.white,
@@ -151,6 +151,7 @@ class _TaskListViewState extends State<TaskListView> {
                                   child: TaskCard(
                                       task: task,
                                       onFavoriteChanged: (newValue) => widget.onToggleFavorite(task),
+                                      
 
                                   ),
 
@@ -185,7 +186,7 @@ class _TaskListViewState extends State<TaskListView> {
                             ),
                             */
 
-                                //SizedBox(height: 100,)
+                                //SizedBox(height: 100,)i di
 
                               ],
                             )

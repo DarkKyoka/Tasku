@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:task_manager_app/HomePage.dart';
+import 'package:task_manager_app/StatsPage.dart';
 import 'package:task_manager_app/Task.dart';
-import 'package:task_manager_app/TaskDialogue.dart';
+import 'package:task_manager_app/TaskMaker.dart';
 import 'DBStuff/TaskRepository.dart';
 import 'package:flutter/services.dart';
 import 'package:task_manager_app/DBStuff/database.dart';
@@ -52,7 +53,8 @@ class _MyAppState extends State<MyApp> {
         //return Taskdialogue();
         //return const Center(child: Text("taskMaker"));
       case 2:
-        return const Center(child: Text("stats"));
+        //return const Center(child: Text("stats"));
+        return Statspage();
 
       case 3:
         return const Center(child: Text("Profile"));

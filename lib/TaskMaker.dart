@@ -228,13 +228,19 @@ class _TaskdialogueState extends State<Taskdialogue> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () async{
-                      final task = TaskModel(
-                        nameControler.text,
-                        descriptionControler.text,
-                        false,
-                        toggledFavorite,
-                      );
-                      Navigator.pop(context, task);
+
+                      if(nameControler.text.isNotEmpty){
+                        final task = TaskModel(
+                          nameControler.text,
+                          descriptionControler.text,
+                          false,
+                          toggledFavorite,
+                        );
+
+                        Navigator.pop(context, task);
+
+                      }
+
 
                     },
 
