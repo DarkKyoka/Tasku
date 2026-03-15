@@ -1,13 +1,11 @@
-import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:task_manager_app/HomePage.dart';
-import 'package:task_manager_app/Task.dart';
+import 'package:task_manager_app/Classes/Task.dart';
 import 'package:drift/drift.dart' hide Column;
 import 'package:task_manager_app/main.dart';
 
-import 'DBStuff/database.dart';
+import '../DBStuff/database.dart';
 
 class Taskdialogue extends StatefulWidget {
   const Taskdialogue({super.key});

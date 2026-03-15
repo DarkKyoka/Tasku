@@ -1,10 +1,7 @@
-import 'package:drift/drift.dart';
 import 'package:flutter/material.dart';
 import 'package:task_manager_app/DBStuff/database.dart';
-import 'package:task_manager_app/Task.dart';
-import 'package:task_manager_app/TaskMaker.dart';
-import 'package:task_manager_app/TaskListView.dart';
-import 'main.dart';
+import 'package:task_manager_app/Screens/TaskListView.dart';
+import '../main.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});

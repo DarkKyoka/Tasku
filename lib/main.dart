@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:task_manager_app/HomePage.dart';
-import 'package:task_manager_app/StatsPage.dart';
-import 'package:task_manager_app/Task.dart';
-import 'package:task_manager_app/TaskMaker.dart';
-import 'DBStuff/TaskRepository.dart';
+import 'package:task_manager_app/Screens/HomeScreen.dart';
+import 'package:task_manager_app/Screens/ProfileScreen.dart';
+import 'package:task_manager_app/Screens/StatsScreen.dart';
+import 'package:task_manager_app/Classes/Task.dart';
+import 'package:task_manager_app/Screens/TaskMakerScreen.dart';
+import 'Repos/TaskRepository.dart';
 import 'package:flutter/services.dart';
 import 'package:task_manager_app/DBStuff/database.dart';
 
@@ -57,7 +58,7 @@ class _MyAppState extends State<MyApp> {
         return Statspage();
 
       case 3:
-        return const Center(child: Text("Profile"));
+        return Profilescreen();
 
       default:
         return const SizedBox();
@@ -204,43 +205,6 @@ class _MyAppState extends State<MyApp> {
         )
 
 
-        /* BottomNavigationBar(
-              unselectedItemColor: Color.fromRGBO(247, 247, 255, 1),
-              selectedItemColor: Color.fromRGBO(86, 227, 159, 1),
-
-              backgroundColor: Color.fromRGBO(23, 3, 18, 1.0),
-
-              items: [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home, color: Colors.white,),
-                  label: "home",
-
-
-                ),
-
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.eighteen_up_rating_rounded, color: Colors.white),
-                  label: "X"
-                ),
-
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.star, color: Colors.white,),
-                  label: 'Favorites',
-                ),
-
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.person, color: Colors.white,),
-                    label: 'Profile'
-                ),
-
-              ],
-
-          currentIndex: _selectedIndex,
-          onTap: _chnageTab,
-
-
-        )
-      */
 
       )
 

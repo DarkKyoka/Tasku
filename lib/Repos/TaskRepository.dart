@@ -1,7 +1,7 @@
 
 import 'package:drift/drift.dart';
 import 'package:task_manager_app/DBStuff/database.dart';
-import 'package:task_manager_app/Task.dart';
+import 'package:task_manager_app/Classes/Task.dart';
 
 
 class TaskRepository {

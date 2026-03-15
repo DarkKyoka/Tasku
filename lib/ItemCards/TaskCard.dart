@@ -1,14 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:task_manager_app/DBStuff/database.dart';
-import 'package:task_manager_app/Task.dart';
 import 'package:task_manager_app/main.dart';
 
-import 'TaskListView.dart';
-import 'HomePage.dart';
-
 class TaskCard extends StatefulWidget {
-  //final void Function(Task) onAddTasktoFavorites;
 
   Task task;
   final void Function(bool)? onFavoriteChanged;

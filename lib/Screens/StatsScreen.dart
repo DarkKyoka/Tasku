@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:task_manager_app/StatCard.dart';
+import 'package:task_manager_app/ItemCards//StatCard.dart';
 
 class Statspage extends StatefulWidget {
   const Statspage({super.key});

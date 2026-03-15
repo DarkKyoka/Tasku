@@ -1,13 +1,9 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:task_manager_app/Task.dart';
-import 'package:task_manager_app/TaskCard.dart';
-import 'package:task_manager_app/TaskMaker.dart';
-import 'package:task_manager_app/HomePage.dart';
-
+import 'package:task_manager_app/Classes/Task.dart';
+import 'package:task_manager_app/ItemCards//TaskCard.dart';
 import 'package:task_manager_app/DBStuff/database.dart';
-import 'package:task_manager_app/main.dart';
 
 class TaskListView extends StatefulWidget {
 
