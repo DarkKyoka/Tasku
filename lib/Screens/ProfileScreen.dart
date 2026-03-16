@@ -89,7 +89,7 @@ class _ProfileState extends State<Profilescreen>{
 
                                   children: [
 
-                                    CircleAvatar(radius: 70,),
+                                    CircleAvatar(radius: 60,),
                                     SizedBox(width: 10,),
                                     Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,13 +97,37 @@ class _ProfileState extends State<Profilescreen>{
 
                                       children: [
                                         SizedBox(height: 55,),
-                                        Text("Name0992929", style: TextStyle(fontSize: 24),),
-                                        Text("Profile tittle", style: TextStyle(fontSize: 15),),
-                                        Text("Level: 10", style: TextStyle(fontSize: 16) ),
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+
+                                            Text("Name0992929",
+                                              style: TextStyle(
+                                                  fontSize: 24,
+                                                  color: Color.fromRGBO(235, 0, 78, 1),
+                                                  height: 1.2
+                                              ),
+                                            ),
+                                            Text("Profile title",
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  color: Color.fromRGBO(255, 166, 22, 1)
+                                              ),),
+                                            Text("Level: 10",
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: Colors.white
+                                                ) ),
+                                          ],
+                                        ),
+
                                         Column(
                                           children: [
+                                            // Level Bar
                                             SizedBox(
-                                              width: 195,
+                                              width: 200,
                                               height: 20,
 
 
@@ -122,14 +146,41 @@ class _ProfileState extends State<Profilescreen>{
 
 
                                             )
+                                          ],
+                                        ),
 
+                                        Row(
+
+
+                                          children: [
+                                            SizedBox(child:
+                                              TextButton(onPressed: (){},
+
+
+                                                child:
+                                                Text("Account Details"),
+
+                                              )
+                                            ),
+
+                                            SizedBox(
+                                              width: 200,
+
+                                              child:
+                                              TextButton(onPressed: (){},
+                                                child:
+                                                Text("Edit Profile"),
+
+                                              )
+                                            )
 
                                           ],
+
                                         )
+
+
                                       ],
-                                    )
-
-
+                                    ),
                                   ]
 
                                 ),
