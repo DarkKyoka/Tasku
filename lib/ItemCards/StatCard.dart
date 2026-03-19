@@ -1,4 +1,6 @@
 
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 enum statNameColor{
@@ -12,13 +14,18 @@ class StatCard extends StatelessWidget {
   final String statName;
   final String statValue;
   final statNameColor labelColor;
-  //final double? height
+
+  // Non Mandatory Properties
+  final double? titleFontSize;
+  final double? valueFontSize;
 
   const StatCard({
     required this.statName,
     required this.statValue,
     this.labelColor = statNameColor.white,
-    //this.height,
+
+    this.titleFontSize,
+    this.valueFontSize,
   });
 
   Color _getStatNameColor(){
@@ -28,6 +35,7 @@ class StatCard extends StatelessWidget {
       case statNameColor.red: return Color.fromRGBO(243, 89, 69, 100);
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +62,7 @@ class StatCard extends StatelessWidget {
           Text(statName,
               textAlign: TextAlign.left,
               style: TextStyle(
-                  fontSize: 16,
+                  fontSize: titleFontSize ?? 16,
                   color: _getStatNameColor(),
                   fontWeight: FontWeight.w500,
 
@@ -67,7 +75,7 @@ class StatCard extends StatelessWidget {
               Text(statValue,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: 36 ,
+                      fontSize: valueFontSize ?? 36,
                       color: Colors.white,
                       fontWeight: FontWeight.w400
                   )

@@ -53,19 +53,18 @@ class _ProfileState extends State<Profilescreen>{
             Column(
               children: [
 
-                // the Gray Background that will go bellow the Cover and the Pfp and will be visible on the User details and Buttons
+                // The Dark Gray Background where Everything sits on top
                 Container(
                   color: Color.fromRGBO(18, 17, 17, 100),
 
                   child:
                   SizedBox(
                     width: double.infinity,
-                    height: 400,
+                    height: 360,
 
-                    // Here will sit the Banner and the Pfp Section
+                    // Here is Sitting the Pfp, Profile Details and the 2 Buttons "Account Details" & "Edit Profile"
                     child: Stack(
-
-
+                      
                       children: [
                         //Banner
                         Container(
@@ -79,7 +78,7 @@ class _ProfileState extends State<Profilescreen>{
                             ),
                         ),
 
-
+                        // Profile Details (PFP, Name, Title, Level text & Level Bar)
                         Positioned(
                           top: 145,
                           child:
@@ -89,7 +88,9 @@ class _ProfileState extends State<Profilescreen>{
 
                                   children: [
 
+                                    // PFP
                                     CircleAvatar(radius: 60,),
+
                                     SizedBox(width: 10,),
                                     Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,6 +98,8 @@ class _ProfileState extends State<Profilescreen>{
 
                                       children: [
                                         SizedBox(height: 55,),
+
+                                        // Name, Title, Level
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           mainAxisAlignment: MainAxisAlignment.center,
@@ -123,11 +126,12 @@ class _ProfileState extends State<Profilescreen>{
                                           ],
                                         ),
 
+                                        // Level Bar
                                         Column(
                                           children: [
-                                            // Level Bar
+
                                             SizedBox(
-                                              width: 200,
+                                              width: 223,
                                               height: 20,
 
 
@@ -149,36 +153,6 @@ class _ProfileState extends State<Profilescreen>{
                                           ],
                                         ),
 
-                                        Row(
-
-
-                                          children: [
-                                            SizedBox(child:
-                                              TextButton(onPressed: (){},
-
-
-                                                child:
-                                                Text("Account Details"),
-
-                                              )
-                                            ),
-
-                                            SizedBox(
-                                              width: 200,
-
-                                              child:
-                                              TextButton(onPressed: (){},
-                                                child:
-                                                Text("Edit Profile"),
-
-                                              )
-                                            )
-
-                                          ],
-
-                                        )
-
-
                                       ],
                                     ),
                                   ]
@@ -191,7 +165,64 @@ class _ProfileState extends State<Profilescreen>{
 
                         ),
 
-                        Text("Grey Background")
+                        // "Account Details" & "Edit Profile" Buttons
+                        Positioned(
+                          bottom: 13,
+                          left: 10,
+                          right: 10,
+
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                //width: 100,
+                                child:
+                                  TextButton(onPressed: (){},
+                                    style:
+                                    TextButton.styleFrom(
+                                        backgroundColor: Color.fromRGBO(11, 0, 8, 100),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadiusGeometry.circular(7)
+                                        )
+                                    ),
+
+                                    child:
+                                    Text("Account Details", style: TextStyle(color: Color.fromRGBO(255, 125, 238, 1.0)),),
+
+                                  ),
+                              ),
+                              SizedBox(width: 5,),
+                              SizedBox(
+                                width: 230,
+                                child:
+                                  TextButton(onPressed: (){},
+
+                                    style:
+
+                                      TextButton.styleFrom(
+                                        //textStyle: TextStyle(
+                                          //color: Color.fromRGBO(86, 227, 159, 1.0)
+                                        //),
+
+                                        backgroundColor: Color.fromRGBO(11, 0, 8, 100),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadiusGeometry.circular(7)
+                                        )
+                                      ),
+                                    
+
+
+
+                                    child:
+                                    Text("Edit Profile", style: TextStyle(color: Color.fromRGBO(86, 227, 159, 1.0)),),
+
+                                  )
+                              ),
+
+
+
+                            ],
+
+                        ))
 
                       ],
 
@@ -201,20 +232,100 @@ class _ProfileState extends State<Profilescreen>{
 
                 ),
 
+                Container(
+                  padding: EdgeInsetsDirectional.symmetric(horizontal: 17, vertical: 18),
+                  child: Column(
+                    spacing: 17,
+                    children: [
 
+                      // title
+                      Container(
+                        alignment: Alignment.topLeft,
+                        child: Text("User Details", style: TextStyle(color: Colors.white, fontSize: 24),),
+                      ),
 
-                // Here i will Rest the Stats and Budgets Screen with the Cards
-                      // <---
+                      // Info Tabs (im gonna use StatCard to fill in the info)
+                      Column(
+                        spacing: 6,
+
+                        children: [
+                          //    Guild & Highest Daily Streaks
+                          IntrinsicHeight(
+                            child: Row(
+                              spacing: 4,
+                              children: [
+                                Expanded(
+                                    flex: 100,
+                                    child:
+                                      StatCard(statName: "Guild", statValue: "Task Warriors", valueFontSize: 26,)
+                                ),
+                                
+                                Expanded(flex: 60,
+                                    child: StatCard(
+                                      statName: "Highest Daily Streaks",
+                                      statValue: "5",
+                                      labelColor: statNameColor.green,
+                                    )
+                                )
+                              ],
+                            ),
+
+                          ),
+
+                          //    Task Completed & Total XP Gained
+                          IntrinsicHeight(
+                            child: Row(
+                              spacing: 4,
+                              children: [
+                                Expanded(
+                                    flex: 70,
+                                    child:
+                                    StatCard(statName: "Task Completed", statValue: "80", labelColor: statNameColor.green,valueFontSize: 26,)
+                                ),
+
+                                Expanded(
+                                    flex: 80,
+                                    child:
+                                    StatCard(statName: "Total XP Gained", statValue: "20.000",valueFontSize: 26,)
+                                ),
+
+                              ],
+                            ),
+                          ),
+
+                          //    Events Participated & Events Completed
+                          IntrinsicHeight(
+                            child: Row(
+                              spacing: 4,
+                              children: [
+                                Expanded(flex: 90,child: StatCard(statName: "Events Participated", statValue: "5")),
+                                Expanded(flex: 70,
+                                    child: StatCard(
+                                      statName: "Events Completed",
+                                      statValue: "2",
+                                      titleFontSize: 15,
+                                      labelColor: statNameColor.green,
+                                    )
+                                )
+
+                              ],
+                            ),
+                          ),
+
+                          SizedBox(height: 60,)
+
+                        ],
+
+                      )
+
+                    ],
+                  ),
+                )
+
 
               ],
 
             )
-
-
-
-
-
-
           ],
 
 
