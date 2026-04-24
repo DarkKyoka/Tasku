@@ -8,9 +8,10 @@ I always wanted and attempted before to replicate this idea into my own app but 
 but now i feel capable and confident to myself that i can replicate it.
 
 Further more, i like the idea as a dev to have my own big project that i could thrive from it, be challenged by it but also grow from it as time passes and development grow. And flutter is the 
-framework that attracted me and made me wanna go into deeper waters and mastering it.
+framework that attracted due to the familiarity i felt with Dart and the Cross-Platform builds it offers making me decide to go into deeper waters and mastering it since i see big potential for 
+some future projects with it.
 
-in the far future i can see Tasku have some online features which will make it even more fun and motivating to do tasks which im not gonna say yet.
+in the far future i can see Tasku have some online features which will make the productivity of the user even more fun and motivating.
 Now, my influences from this is first and foremost those apps inspired by the anime "Solo Leveling" which are like rpg and make the productivity of the user feel like a game 
 and also discord in terms of their cosmetic and personalised feel they leave to users althought i want to make it free to get them, accesible for everyone and also of course FOSS 
 because i want to contribute most of my work there.
