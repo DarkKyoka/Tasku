@@ -1,16 +1,16 @@
-# task_manager_app
+# Tasku
+Gamyfied Task manager, with level & cosmetic system
 
-A new Flutter project.
+# About App
+The reasons behind Tasku are multiple.
+For the first part i always liked the idea some apps have adapted which is taking production and ‘gamifying’ it in order to make it more entertaining & easier to follow.
+I always wanted and attempted before to replicate this idea into my own app but i failed multiple times as i lacking the skills and the way to it but now i feel capable and confident to myself
+that i can replicate it.
 
-## Getting Started
+Further more, i like the idea as a dev to have my own big project that i could thrive from it, be challenged by it but also grow from it as time passes and development grow. And flutter is the 
+framework that attracted me and made me wanna go into deeper waters and mastering it.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+in the far future i can see Tasku have some online features which will make it even more fun and motivating to do tasks which im not gonna say yet.
+Now, my influences from this is first and foremost those apps inspired by the anime "Solo Leveling" which are like rpg and make the productivity of the user feel like a game 
+and also discord in terms of their cosmetic and personalised feel they leave to users althought i want to make it free to get them, accesible for everyone and also of course FOSS 
+because i want to contribute most of my work there.
